@@ -24,11 +24,13 @@ playerO.move = function (board) {
     }
   }
 }
-for (let count = 0; count < 100; count++) {
-  var firstGame = game.game(3);
+for (let count = 0; count < 1000; count++) {
+  var firstGame = game.game(5);
   var result = firstGame.play(playerX, playerO);
-  console.log(result);
-  var b = firstGame.print();
-  console.log(b);
+  if (result != 'D') {
+    console.log(result);
+    var b = firstGame.print();
+    console.log(b);
+  }
 }
 

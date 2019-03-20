@@ -21,10 +21,10 @@ exports.game = function (boardSize) {
   }
 
   var winner = function () {
-    var diagonalX1, diagonalO1, diagonalX2, diagonalO2 = 0;
+    var diagonalX1 = 0, diagonalO1 = 0, diagonalX2 = 0, diagonalO2 = 0;
     var isDraw = true;
     for (let i = 0; i < boardSize; i++) {
-      var horizontalX, horizontalO, verticalX, verticalO = 0;
+      var horizontalX = 0, horizontalO = 0, verticalX = 0, verticalO = 0;
       for (let j = 0; j < boardSize; j++) {
         if (valueAt(i, j) == null) {
           isDraw = false;
