@@ -7,6 +7,9 @@ exports.game = function (boardSize) {
   var X = 'X';
   var O = 'O';
   var draw = 'D';
+  game.X = X;
+  game.O = O;
+  game.draw = draw;
 
   var indexFor = function (row, col) {
     return row * boardSize + col;
@@ -131,4 +134,49 @@ exports.game = function (boardSize) {
   }
 
   return game;
+}
+exports.gameSeries = function (boardSize, numGames, player1, player2) {
+  var series = {};
+
+  series.play = function (print) {
+    var player1Wins = 0;
+    var player2Wins = 0;
+    var draws = 0;
+
+    for (let count = 0; count < numGames; count++) {
+      var game = exports.game(boardSize);
+      var player1IsX = (count % 2 == 0);
+      var playerX = player1IsX ? player1 : player2;
+      var playerO = player1IsX ? player2 : player1;
+      var result = game.play(playerX, playerO);
+      if (result === game.draw) {
+        draws++;
+      } else if (result === game.X) {
+        if (player1IsX) {
+          player1Wins++;
+        } else {
+          player2Wins++;
+        }
+      } else {
+        if (player1IsX) {
+          player2Wins++;
+        } else {
+          player1Wins++;
+        }
+      }
+      if (print) {
+        console.log("Result: " + result);
+        var board = game.print();
+        console.log(board);
+      }
+    }
+
+    return {
+      player1Wins: player1Wins,
+      player2Wins: player2Wins,
+      draws: draws,
+    };
+  }
+
+  return series;
 }
