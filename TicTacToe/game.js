@@ -114,9 +114,9 @@ exports.game = function (boardSize) {
         return move;
       }
       if (xTurn) {
-        move = playerX.move(gameBoard);
+        move = playerX.move(gameBoard, X);
       } else {
-        move = playerO.move(gameBoard);
+        move = playerO.move(gameBoard, O);
       }
       // Check if move is legal.
       var currentValue = valueAt(move.row, move.col);
@@ -173,8 +173,11 @@ exports.gameSeries = function (boardSize, numGames, player1, player2) {
 
     return {
       player1Wins: player1Wins,
+      player1Percent: player1Wins / numGames * 100,
       player2Wins: player2Wins,
+      player2Percent: player2Wins / numGames * 100,
       draws: draws,
+      drawPercent: draws / numGames * 100,
     };
   }
 
