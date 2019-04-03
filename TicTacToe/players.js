@@ -1,5 +1,21 @@
 'use strict';
 
+exports.andiPlayer = function () {
+  var player = {};
+  player.move = function (board, ourMark) {
+    // Return a valid move here.
+    // ourMark will be X or O, but it doesn't matter, you can compare it to 
+    // what is in each spot.
+    // An empty spot will have value null, one that is yours will have ourMark,
+    // otherwise it belongs to the other player.
+    // You can use board.valueAt(r, c) to see what is in each spot.
+    // row and col are 0 indexed.
+    // board.size contains the size of the board, board is square.
+    // Return your move by creating it with board.move(r, c);
+  }
+  return player;
+}
+
 exports.randomPlayer = function () {
   var player = {};
   function getRandomInt(max) {

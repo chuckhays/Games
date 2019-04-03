@@ -13,3 +13,9 @@ series = game.gameSeries(3, 100000, player1, player2);
 result = series.play(false);
 console.log(result);
 
+console.log('Andi vs random');
+player1 = players.AndiPlayer();
+player2 = players.randomPlayer();
+series = game.gameSeries(3, 100000, player1, player2);
+result = series.play(false);
+console.log(result);
