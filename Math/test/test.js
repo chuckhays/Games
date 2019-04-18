@@ -38,4 +38,58 @@ describe('MyMath', function () {
             assert.equal(sum, 4);
         });
     });
+    describe('multiply', function () {
+        it('should multiply normal numbers', function () {
+            var sum = math.multiply(1, 2);
+            assert.equal(sum, 2);
+        });
+        it('should multiply negative numbers', function () {
+            var sum = math.multiply(-4, -9);
+            assert.equal(sum, 36);
+        });
+        it('should multiply mixed numbers', function () {
+            var sum = math.multiply(10, -12);
+            assert.equal(sum, -120);
+        });
+        it('should multiply equal numbers', function () {
+            var sum = math.multiply(2, -2);
+            assert.equal(sum, -4);
+        });
+    });
+    describe('power', function () {
+        it('should power normal numbers', function () {
+            var sum = math.power(1, 2);
+            assert.equal(sum, 1);
+        });
+        it('should power negative numbers', function () {
+            var sum = math.power(-4, 3);
+            assert.equal(sum, -64);
+        });
+        it('should power numbers', function () {
+            var sum = math.power(10, 4);
+            assert.equal(sum, 10000);
+        });
+        it('should power to 0th', function () {
+            var sum = math.power(2, 0);
+            assert.equal(sum, 1);
+        });
+    });
+    describe('factorial', function () {
+        it('should factorial normal numbers', function () {
+            var sum = math.factorial(5);
+            assert.equal(sum, 120);
+        });
+        it('should factorial 0', function () {
+            var sum = math.factorial(0);
+            assert.equal(sum, 1);
+        });
+        it('should factorial 1', function () {
+            var sum = math.factorial(0);
+            assert.equal(sum, 1);
+        });
+        it('should factorial 2', function () {
+            var sum = math.factorial(0);
+            assert.equal(sum, 2);
+        });
+    });
 });

@@ -8,9 +8,24 @@ function MyMath() {
     return a - b;
   }
 
+  function multiply(a, b) {
+    return 0;
+  }
+
+  function power(a, b) {
+    return 0;
+  }
+
+  function factorial(a) {
+    return 0;
+  }
+
   return {
     add,
-    subtract
+    subtract,
+    multiply,
+    power,
+    factorial,
   }
 
 }
