@@ -89,7 +89,7 @@ describe('MyMath', function () {
         });
         it('should factorial 2', function () {
             var sum = math.factorial(0);
-            assert.equal(sum, 2);
+            assert.equal(sum, 1);
         });
     });
 });

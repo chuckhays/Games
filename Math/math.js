@@ -9,15 +9,20 @@ function MyMath() {
   }
 
   function multiply(a, b) {
-    return 0;
+    return a * b;
   }
 
   function power(a, b) {
-    return 0;
+    return Math.pow(a, b);
   }
 
   function factorial(a) {
-    return 0;
+    if (a === 0 || a === 1)
+      return 1;
+    for (var i = a - 1; i >= 1; i--) {
+      a *= i;
+    }
+    return a;
   }
 
   return {
