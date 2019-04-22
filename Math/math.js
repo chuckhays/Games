@@ -19,10 +19,9 @@ function MyMath() {
   function factorial(a) {
     if (a === 0 || a === 1)
       return 1;
-    for (var i = a - 1; i >= 1; i--) {
-      a *= i;
+    else {
+      return (a * factorial(a - 1));
     }
-    return a;
   }
 
   return {
