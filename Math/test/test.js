@@ -92,4 +92,22 @@ describe('MyMath', function () {
             assert.equal(sum, 1);
         });
     });
+    describe('fibonacci', function () {
+        it('should find fibonacci of 5', function () {
+            var sum = math.fibonacci(5);
+            assert.equal(sum, 5);
+        });
+        it('should find fibonacci of 0', function () {
+            var sum = math.fibonacci(0);
+            assert.equal(sum, 0);
+        });
+        it('should find fibonacci of 1', function () {
+            var sum = math.fibonacci(1);
+            assert.equal(sum, 1);
+        });
+        it('should find fibonacci of 10', function () {
+            var sum = math.fibonacci(10);
+            assert.equal(sum, 55);
+        });
+    });
 });
