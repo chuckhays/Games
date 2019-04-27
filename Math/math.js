@@ -34,13 +34,38 @@ function MyMath() {
     }
   }
 
+  function isEven(a) {
+    if (a % 2 === 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  function isOdd(a) {
+    if (a % 2 !== 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  function divisors(a) {
+
+  }
+
+  //function primes(a) {}
+
   return {
     add,
     subtract,
     multiply,
     power,
     factorial,
-    fibonacci
+    fibonacci,
+    isEven,
+    isOdd,
+    divisors
   }
 
 }

@@ -110,4 +110,66 @@ describe('MyMath', function () {
             assert.equal(sum, 55);
         });
     });
+    describe('isEven', function () {
+        it('should determine if 0 is even', function () {
+            var sum = math.isEven(0);
+            assert.equal(sum, true);
+        });
+        it('should determine if 1 is even', function () {
+            var sum = math.isEven(1);
+            assert.equal(sum, false);
+        });
+        it('should determine if 2 is even', function () {
+            var sum = math.isEven(2);
+            assert.equal(sum, true);
+        });
+        it('should determine if 100 is even', function () {
+            var sum = math.isEven(100);
+            assert.equal(sum, true);
+        });
+        it('should determine if 101 is even', function () {
+            var sum = math.isEven(101);
+            assert.equal(sum, false);
+        });
+    });
+    describe('isOdd', function () {
+        it('should determine if 0 is odd', function () {
+            var sum = math.isOdd(0);
+            assert.equal(sum, false);
+        });
+        it('should determine if 1 is odd', function () {
+            var sum = math.isOdd(1);
+            assert.equal(sum, true);
+        });
+        it('should determine if 100 is odd', function () {
+            var sum = math.isOdd(100);
+            assert.equal(sum, false);
+        });
+        it('should determine if 101 is odd', function () {
+            var sum = math.isOdd(101);
+            assert.equal(sum, true);
+        });
+        it('should determine if 777 is odd', function () {
+            var sum = math.isOdd(777);
+            assert.equal(sum, true);
+        });
+    });
+    describe('fibonacci', function () {
+        it('should find fibonacci of 5', function () {
+            var sum = math.fibonacci(5);
+            assert.equal(sum, 5);
+        });
+        it('should find fibonacci of 0', function () {
+            var sum = math.fibonacci(0);
+            assert.equal(sum, 0);
+        });
+        it('should find fibonacci of 1', function () {
+            var sum = math.fibonacci(1);
+            assert.equal(sum, 1);
+        });
+        it('should find fibonacci of 10', function () {
+            var sum = math.fibonacci(10);
+            assert.equal(sum, 55);
+        });
+    });
 });
