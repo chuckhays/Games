@@ -50,11 +50,29 @@ function MyMath() {
     }
   }
 
-  function divisors(a) {
-
+  function divisors(a) { //return an array of all divisors of a
+    list = [];
+    for (var i = 1; i <= a; i++) {
+      if (a % i === 0) {
+        list.push(i);
+      }
+    } if (list.length === 2) {
+      return 'I am prime';
+    }
+    return list;
   }
 
-  //function primes(a) {}
+
+  /*function primesUpTo(a) {
+    if (divisors(a) === 1 && divisors(a) === a) {
+      return //array of prime numbers < a ;
+    } else {
+      return true;
+    }
+  }
+  NOTES: if divisors.length == 2; true (1 and itself in array)
+  for loop through all numers. find divisors of each number. if array.lngth==2, push to new array.
+  */
 
   return {
     add,
