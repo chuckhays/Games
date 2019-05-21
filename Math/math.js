@@ -50,14 +50,12 @@ function MyMath() {
     }
   }
 
-  function divisors(a) { //return an array of all divisors of a
+  function divisors(a) {
     list = [];
     for (var i = 1; i <= a; i++) {
       if (a % i === 0) {
         list.push(i);
       }
-    } if (list.length === 2) {
-      return 'I am prime';
     }
     return list;
   }

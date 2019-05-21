@@ -157,23 +157,23 @@ describe('MyMath', function () {
     describe('divisors', function () {
         it('should find divisors of 5', function () {
             var sum = math.divisors(5);
-            assert.equal(sum, 'I am prime', [1, 5]);
+            assert.deepStrictEqual(sum, [1, 5]);
         });
         it('should find divisors of 100', function () {
             var sum = math.divisors(100);
-            assert.equal(sum, [1, 2, 4, 5, 10, 20, 25, 50, 100]);
+            assert.deepStrictEqual(sum, [1, 2, 4, 5, 10, 20, 25, 50, 100]);
         });
         it('should find divisors of 20', function () {
             var sum = math.divisors(20);
-            assert.equal(sum, [1, 2, 4, 5, 10, 20]);
+            assert.deepStrictEqual(sum, [1, 2, 4, 5, 10, 20]);
         });
         it('should find divisors of 74', function () {
             var sum = math.divisors(74);
-            assert.equal(sum, [1, 2, 37, 74]);
+            assert.deepStrictEqual(sum, [1, 2, 37, 74]);
         });
         it('should find divisors of 31', function () {
             var sum = math.divisors(31);
-            assert.equal(sum, 'I am prime', [1, 31]);
+            assert.deepStrictEqual(sum, [1, 31]);
         });
     });
 });
