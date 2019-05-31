@@ -60,17 +60,23 @@ function MyMath() {
     return list;
   }
 
-
-  /*function primesUpTo(a) {
-    if (divisors(a) === 1 && divisors(a) === a) {
-      return //array of prime numbers < a ;
-    } else {
-      return true;
+  function isPrime(a) {
+    for (var i = 1; i <= a; i++) {
+      if (divisors(a).length === 2) {
+        return true;
+      } else {
+        return false;
+      }
     }
   }
-  NOTES: if divisors.length == 2; true (1 and itself in array)
-  for loop through all numers. find divisors of each number. if array.lngth==2, push to new array.
-  */
+
+  function primesUpTo(a) {
+    primeList = [];
+    if (isPrime(a).length === 2) {
+      primeList.push(a);
+    }
+    return primeList;
+  }
 
   return {
     add,
@@ -81,7 +87,9 @@ function MyMath() {
     fibonacci,
     isEven,
     isOdd,
-    divisors
+    divisors,
+    isPrime,
+    primesUpTo
   }
 
 }

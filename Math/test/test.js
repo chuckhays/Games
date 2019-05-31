@@ -176,4 +176,48 @@ describe('MyMath', function () {
             assert.deepStrictEqual(sum, [1, 31]);
         });
     });
+    describe('isPrime', function () {
+        it('should determine if 5 is prime', function () {
+            var sum = math.isPrime(5);
+            assert.equal(sum, true);
+        });
+        it('should determine if 100 is prime', function () {
+            var sum = math.isPrime(100);
+            assert.equal(sum, false);
+        });
+        it('should determine if 20 is prime', function () {
+            var sum = math.isPrime(20);
+            assert.equal(sum, false);
+        });
+        it('should determine if 74 is prime', function () {
+            var sum = math.isPrime(74);
+            assert.equal(sum, false);
+        });
+        it('should determine if 31 is prime', function () {
+            var sum = math.isPrime(31);
+            assert.equal(sum, true);
+        });
+    });
+    describe('primesUpTo', function () {
+        it('should find primesUpTo of 5', function () {
+            var sum = math.primesUpTo(5);
+            assert.deepStrictEqual(sum, [2, 3, 5]);
+        });
+        it('should find primesUpTo of 100', function () {
+            var sum = math.primesUpTo(100);
+            assert.deepStrictEqual(sum, [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]);
+        });
+        it('should find primesUpTo of 20', function () {
+            var sum = math.primesUpTo(20);
+            assert.deepStrictEqual(sum, [2, 3, 5, 7, 11, 13, 17, 19]);
+        });
+        it('should find primesUpTo of 74', function () {
+            var sum = math.primesUpTo(74);
+            assert.deepStrictEqual(sum, [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73]);
+        });
+        it('should find primesUpTo of 31', function () {
+            var sum = math.primesUpTo(31);
+            assert.deepStrictEqual(sum, [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31]);
+        });
+    });
 });
