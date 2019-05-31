@@ -61,19 +61,19 @@ function MyMath() {
   }
 
   function isPrime(a) {
-    for (var i = 1; i <= a; i++) {
-      if (divisors(a).length === 2) {
-        return true;
-      } else {
-        return false;
-      }
+    if (divisors(a).length === 2) {
+      return true;
+    } else {
+      return false;
     }
   }
 
   function primesUpTo(a) {
     primeList = [];
-    if (isPrime(a).length === 2) {
-      primeList.push(a);
+    for (var i = 1; i <= a; i++) {
+      if (isPrime(i) === true) {
+        primeList.push(i);
+      }
     }
     return primeList;
   }
