@@ -20,13 +20,17 @@ class Game {
             print("  Game pair #\(i)")
             let p1g1 = try player(name: player1)
             let p2g1 = try player(name: player2)
+            print("    Player 1 is x, Player 2 is o")
             let result1 = runSingleGame(xPlayer: p1g1, oPlayer: p2g1)
             switch result1 {
             case .draw:
+                print("      draw")
                 draws+=1
             case .xWins:
+                print("      Player 1 (x) wins")
                 player1Wins+=1
             case .oWins:
+                print("      Player 2 (o) wins")
                 player2Wins+=1
             case .playing:
                 // Error.
@@ -35,13 +39,17 @@ class Game {
             
             let p1g2 = try player(name: player1)
             let p2g2 = try player(name: player2)
+            print("    Player 2 is x, Player 1 is o")
             let result2 = runSingleGame(xPlayer: p2g2, oPlayer: p1g2)
             switch result2 {
             case .draw:
+                print("      draw")
                 draws+=1
             case .xWins:
+                print("      Player 2 (x) wins")
                 player2Wins+=1
             case .oWins:
+                print("      Player 1 (o) wins")
                 player1Wins+=1
             case .playing:
                 // Error.
@@ -68,6 +76,7 @@ class Game {
         // Player1 is x, Player2 is o.
         var currentTurn: Value = .x
         
+        gameBoard.printBoard()
         while gameBoard.state == .playing {
             let move = currentTurn == .x ? xPlayer.makeMove(gameBoard: gameBoard, playerValue: .x) :
             oPlayer.makeMove(gameBoard: gameBoard, playerValue: .o)
@@ -77,6 +86,7 @@ class Game {
                 return currentTurn == .x ? .oWins : .xWins
             }
             currentTurn = currentTurn == .x ? .o : .x
+            gameBoard.printBoard()
         }
         
         return gameBoard.state

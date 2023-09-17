@@ -31,54 +31,62 @@ class GameBoardImpl: GameBoard {
         // Check columns.
         for x in 0..<xSize {
             let firstValue = values[x][0]
-            var matches = true
-            for y in 1..<ySize {
-                if firstValue != values[x][y] {
-                    matches = false
-                    break
+            if firstValue == .x || firstValue == .o {
+                var matches = true
+                for y in 1..<ySize {
+                    if firstValue != values[x][y] {
+                        matches = false
+                        break
+                    }
                 }
-            }
-            if matches {
-                return firstValue == .x ? .xWins : .oWins
+                if matches {
+                    return firstValue == .x ? .xWins : .oWins
+                }
             }
         }
         // Check rows.
         for y in 0..<ySize {
             let firstValue = values[0][y]
-            var matches = true
-            for x in 1..<xSize {
-                if firstValue != values[x][y] {
-                    matches = false
-                    break
+            if firstValue == .x || firstValue == .o {
+                var matches = true
+                for x in 1..<xSize {
+                    if firstValue != values[x][y] {
+                        matches = false
+                        break
+                    }
                 }
-            }
-            if matches {
-                return firstValue == .x ? .xWins : .oWins
+                if matches {
+                    return firstValue == .x ? .xWins : .oWins
+                }
             }
         }
         // Check diagonals (only applies in square games).
         if xSize == ySize {
             var firstValue = values[0][0]
-            var matches = true
-            for i in 1..<xSize {
-                if firstValue != values[i][i] {
-                    matches = false
-                    break
+            if firstValue == .x || firstValue == .o {
+                var matches = true
+                for i in 1..<xSize {
+                    if firstValue != values[i][i] {
+                        matches = false
+                        break
+                    }
                 }
-            }
-            if matches {
-                return firstValue == .x ? .xWins : .oWins
+                if matches {
+                    return firstValue == .x ? .xWins : .oWins
+                }
             }
             firstValue = values[xSize - 1][0]
-            matches = true
-            for i in 1..<xSize {
-                if firstValue != values[xSize - 1 - i][i] {
-                    matches = false
-                    break
+            if firstValue == .x || firstValue == .o {
+                var matches = true
+                for i in 1..<xSize {
+                    if firstValue != values[xSize - 1 - i][i] {
+                        matches = false
+                        break
+                    }
                 }
-            }
-            if matches {
-                return firstValue == .x ? .xWins : .oWins
+                if matches {
+                    return firstValue == .x ? .xWins : .oWins
+                }
             }
         }
         
@@ -112,6 +120,38 @@ class GameBoardImpl: GameBoard {
         }
         values[x][y] = value
         return true
+    }
+    
+    public func printBoard() {
+        let width = xSize * 2 + 1
+        func printSeparator() {
+            for _ in 0..<width - 1 {
+                print("-", terminator: "")
+            }
+            print("-")
+        }
+        func printRow(y: Int) {
+            for x in 0..<xSize {
+                let value = values[x][y]
+                print("|", terminator: "")
+                switch value {
+                case .x:
+                    print("x", terminator: "")
+                case .o:
+                    print("o", terminator: "")
+                case .empty:
+                    print(" ", terminator: "")
+                case .invalid:
+                    print("?", terminator: "")
+                }
+            }
+            print("|")
+            printSeparator()
+        }
+        printSeparator()
+        for y in 0..<ySize {
+            printRow(y: y)
+        }
     }
     
 }
