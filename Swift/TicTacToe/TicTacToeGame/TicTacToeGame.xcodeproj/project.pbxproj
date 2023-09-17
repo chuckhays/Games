@@ -14,6 +14,7 @@
 		1356E4172AB7497E00537CC1 /* GameBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1356E4162AB7497E00537CC1 /* GameBoard.swift */; };
 		1356E4192AB74CD100537CC1 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1356E4182AB74CD100537CC1 /* Player.swift */; };
 		1356E41B2AB753D200537CC1 /* RandomPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1356E41A2AB753D200537CC1 /* RandomPlayer.swift */; };
+		1356E41F2AB7752400537CC1 /* BlockingThenRandomPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1356E41E2AB7752400537CC1 /* BlockingThenRandomPlayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -35,6 +36,7 @@
 		1356E4162AB7497E00537CC1 /* GameBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBoard.swift; sourceTree = "<group>"; };
 		1356E4182AB74CD100537CC1 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		1356E41A2AB753D200537CC1 /* RandomPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomPlayer.swift; sourceTree = "<group>"; };
+		1356E41E2AB7752400537CC1 /* BlockingThenRandomPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockingThenRandomPlayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 				1356E4142AB748D900537CC1 /* Game.swift */,
 				1356E41A2AB753D200537CC1 /* RandomPlayer.swift */,
 				1356E4162AB7497E00537CC1 /* GameBoard.swift */,
+				1356E41E2AB7752400537CC1 /* BlockingThenRandomPlayer.swift */,
 				1356E4182AB74CD100537CC1 /* Player.swift */,
 			);
 			path = TicTacToeGame;
@@ -148,6 +151,7 @@
 				1356E4092AB7454300537CC1 /* main.swift in Sources */,
 				1356E4172AB7497E00537CC1 /* GameBoard.swift in Sources */,
 				1356E4152AB748D900537CC1 /* Game.swift in Sources */,
+				1356E41F2AB7752400537CC1 /* BlockingThenRandomPlayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

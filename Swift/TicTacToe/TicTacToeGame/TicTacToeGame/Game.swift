@@ -66,6 +66,8 @@ class Game {
         switch (name) {
         case "RandomPlayer":
             return RandomPlayer()
+        case "BlockingThenRandomPlayer":
+            return BlockingThenRandomPlayer()
         default:
             throw PlayerError.playerNotFound(name: name)
         }
