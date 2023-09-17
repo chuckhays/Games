@@ -1,7 +1,6 @@
 import Foundation
 
 enum PlayerError: Error {
-    case invalidMove
     case playerNotFound(name: String)
 }
 
@@ -15,7 +14,10 @@ class Game {
         var player2Wins = 0
         var draws = 0
         
-        for _ in 0..<count {
+        print("Running \(count) pairs of games for player1: \(player1) vs player2: \(player2)")
+        
+        for i in 0..<count {
+            print("  Game pair #\(i)")
             let p1g1 = try player(name: player1)
             let p2g1 = try player(name: player2)
             let result1 = runSingleGame(xPlayer: p1g1, oPlayer: p2g1)
@@ -46,7 +48,10 @@ class Game {
                 break
             }
         }
-        
+        print("Game results:")
+        print("Player 1 wins: \(player1Wins)")
+        print("Player 2 wins: \(player2Wins)")
+        print("Draws: \(draws)")
     }
     
     private func player(name: String) throws -> Player {
