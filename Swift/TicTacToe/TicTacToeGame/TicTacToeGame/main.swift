@@ -12,7 +12,8 @@ struct TicTacToeGame: ParsableCommand {
     var count: Int
     
     mutating func run() throws {
-        
+        let game = Game()
+        game.runGame(player1: player1, player2: player2, count: count)
     }
 }
 
