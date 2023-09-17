@@ -1,23 +1,72 @@
 import Foundation
 
+enum PlayerError: Error {
+    case invalidMove
+    case playerNotFound(name: String)
+}
+
 class Game {
     
     init() {
     }
     
-    public func runGame(player1: String, player2: String, count: Int) {
+    public func runGame(player1: String, player2: String, count: Int) throws {
+        var player1Wins = 0
+        var player2Wins = 0
+        var draws = 0
+        
+        for _ in 0..<count {
+            let p1g1 = try player(name: player1)
+            let p2g1 = try player(name: player2)
+            let result1 = runSingleGame(xPlayer: p1g1, oPlayer: p2g1)
+            switch result1 {
+            case .draw:
+                draws+=1
+            case .xWins:
+                player1Wins+=1
+            case .oWins:
+                player2Wins+=1
+            case .playing:
+                // Error.
+                break
+            }
+            
+            let p1g2 = try player(name: player1)
+            let p2g2 = try player(name: player2)
+            let result2 = runSingleGame(xPlayer: p2g2, oPlayer: p1g2)
+            switch result2 {
+            case .draw:
+                draws+=1
+            case .xWins:
+                player2Wins+=1
+            case .oWins:
+                player1Wins+=1
+            case .playing:
+                // Error.
+                break
+            }
+        }
         
     }
     
-    private func runSingleGame(player1: Player, player2: Player) -> GameState {
+    private func player(name: String) throws -> Player {
+        switch (name) {
+        case "RandomPlayer":
+            return RandomPlayer()
+        default:
+            throw PlayerError.playerNotFound(name: name)
+        }
+    }
+    
+    private func runSingleGame(xPlayer: Player, oPlayer: Player) -> GameState {
         let gameBoard = GameBoardImpl(xSize: 3, ySize: 3)
         // Player1 is x, Player2 is o.
         var currentTurn: Value = .x
         
         while gameBoard.state == .playing {
-            let move = currentTurn == .x ? player1.makeMove(gameBoard: gameBoard, playerValue: .x) :
-                player2.makeMove(gameBoard: gameBoard, playerValue: .o)
-            var moveResult = gameBoard.setValue(x: move.x, y: move.y, value: currentTurn)
+            let move = currentTurn == .x ? xPlayer.makeMove(gameBoard: gameBoard, playerValue: .x) :
+            oPlayer.makeMove(gameBoard: gameBoard, playerValue: .o)
+            let moveResult = gameBoard.setValue(x: move.x, y: move.y, value: currentTurn)
             guard moveResult else {
                 // Player made an illegal move, end the game.
                 return currentTurn == .x ? .oWins : .xWins
