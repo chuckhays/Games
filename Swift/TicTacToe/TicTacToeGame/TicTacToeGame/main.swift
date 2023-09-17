@@ -1,11 +1,20 @@
-//
-//  main.swift
-//  TicTacToeGame
-//
-//  Created by Chuck Hays on 9/17/23.
-//
-
+import ArgumentParser
 import Foundation
 
-print("Hello, World!")
+struct TicTacToeGame: ParsableCommand {
+    @Option(name: [.long])
+    var player1: String
+    
+    @Option(name: [.long])
+    var player2: String
+    
+    @Option(name: [.short, .long])
+    var count: Int
+    
+    mutating func run() throws {
+        
+    }
+}
+
+TicTacToeGame.main()
 
