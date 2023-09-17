@@ -12,6 +12,7 @@
 		1356E4132AB7460500537CC1 /* generate-manual in Frameworks */ = {isa = PBXBuildFile; productRef = 1356E4122AB7460500537CC1 /* generate-manual */; };
 		1356E4152AB748D900537CC1 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1356E4142AB748D900537CC1 /* Game.swift */; };
 		1356E4172AB7497E00537CC1 /* GameBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1356E4162AB7497E00537CC1 /* GameBoard.swift */; };
+		1356E4192AB74CD100537CC1 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1356E4182AB74CD100537CC1 /* Player.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +32,7 @@
 		1356E4082AB7454300537CC1 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		1356E4142AB748D900537CC1 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		1356E4162AB7497E00537CC1 /* GameBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBoard.swift; sourceTree = "<group>"; };
+		1356E4182AB74CD100537CC1 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 				1356E4082AB7454300537CC1 /* main.swift */,
 				1356E4142AB748D900537CC1 /* Game.swift */,
 				1356E4162AB7497E00537CC1 /* GameBoard.swift */,
+				1356E4182AB74CD100537CC1 /* Player.swift */,
 			);
 			path = TicTacToeGame;
 			sourceTree = "<group>";
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1356E4192AB74CD100537CC1 /* Player.swift in Sources */,
 				1356E4092AB7454300537CC1 /* main.swift in Sources */,
 				1356E4172AB7497E00537CC1 /* GameBoard.swift in Sources */,
 				1356E4152AB748D900537CC1 /* Game.swift in Sources */,
