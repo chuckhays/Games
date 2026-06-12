@@ -4,23 +4,25 @@ public final class GameRunner: @unchecked Sendable {
     private let player1: TicTacToePlayer
     private let player2: TicTacToePlayer
     private let totalGames: Int
+    private let visualize: Bool
     
     private var p1Wins = 0
     private var p2Wins = 0
     private var draws = 0
     
-    public init(player1: TicTacToePlayer, player2: TicTacToePlayer, totalGames: Int) {
+    public init(player1: TicTacToePlayer, player2: TicTacToePlayer, totalGames: Int, visualize: Bool = false) {
         self.player1 = player1
         self.player2 = player2
         self.totalGames = totalGames
+        self.visualize = visualize
     }
     
     public func run() {
         print("Starting Tic Tac Toe simulation: \(player1.name) vs \(player2.name) for \(totalGames) games.\n")
         
         let isHumanPlaying = (player1 is HumanPlayer) || (player2 is HumanPlayer)
-        // Verbose mode is on if there are few games or if a human player is involved
-        let verbose = totalGames <= 5 || isHumanPlaying
+        // Verbose/visualization mode is on if explicitly requested or if a human player is active
+        let verbose = visualize || isHumanPlaying
         
         for gameIndex in 1...totalGames {
             print("========================================")

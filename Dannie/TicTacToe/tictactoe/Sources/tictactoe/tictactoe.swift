@@ -5,9 +5,10 @@ struct tictactoe {
     static func main() {
         let args = CommandLine.arguments
         
-        var games = 1000
+        var games = 10
         var p1Type = "minimax"
-        var p2Type = "minimax"
+        var p2Type = "random"
+        var visualize = true
         
         func printHelp() {
             print("""
@@ -19,6 +20,7 @@ struct tictactoe {
               -g, --games <count>     Number of games to simulate (default: 10)
               -p1, --player1 <type>   Type of player 1: random, minimax, human (default: minimax)
               -p2, --player2 <type>   Type of player 2: random, minimax, human (default: random)
+              -v, --visualize         Visualize each game as it is played (default: on)
               -h, --help              Show this help menu
             """)
         }
@@ -30,6 +32,9 @@ struct tictactoe {
             case "-h", "--help":
                 printHelp()
                 return
+            case "-v", "--visualize":
+                visualize = true
+                i += 1
             case "-g", "--games":
                 if i + 1 < args.count, let val = Int(args[i+1]), val > 0 {
                     games = val
@@ -104,7 +109,7 @@ struct tictactoe {
             fatalError("Unsupported player 2 type")
         }
         
-        let runner = GameRunner(player1: p1, player2: p2, totalGames: games)
+        let runner = GameRunner(player1: p1, player2: p2, totalGames: games, visualize: visualize)
         runner.run()
     }
 }
