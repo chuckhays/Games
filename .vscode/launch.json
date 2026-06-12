@@ -1,0 +1,24 @@
+{
+    "configurations": [
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:Games}/Swift/TicTacToe",
+            "name": "Debug TicTacToe (Swift/TicTacToe)",
+            "target": "TicTacToe",
+            "configuration": "debug",
+            "preLaunchTask": "swift: Build Debug TicTacToe (Swift/TicTacToe)"
+        },
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:Games}/Swift/TicTacToe",
+            "name": "Release TicTacToe (Swift/TicTacToe)",
+            "target": "TicTacToe",
+            "configuration": "release",
+            "preLaunchTask": "swift: Build Release TicTacToe (Swift/TicTacToe)"
+        }
+    ]
+}
