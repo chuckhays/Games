@@ -1,27 +1,9 @@
 import Foundation
 
-public final class HumanPlayer: TicTacToePlayer, @unchecked Sendable {
-    public let name: String
-    public var piece: BoardPiece
-    private var board: Board
-    private let lock = NSLock()
+public final class HumanPlayer: TicTacToePlayerBase {
     
-    public init(name: String, piece: BoardPiece) {
-        self.name = name
-        self.piece = piece
-        self.board = Board()
-    }
-    
-    public func updateBoard(_ board: Board) {
-        lock.lock()
-        defer { lock.unlock() }
-        self.board = board
-    }
-    
-    public func requestMove() -> (row: Int, col: Int) {
-        lock.lock()
-        let currentBoard = board
-        lock.unlock()
+    public override func requestMove() -> (row: Int, col: Int) {
+        let currentBoard = self.board
         
         print("\(name) (\(piece.rawValue))'s turn. Enter row and column (0-2) separated by a space (e.g., '1 1'): ", terminator: "")
         fflush(stdout)

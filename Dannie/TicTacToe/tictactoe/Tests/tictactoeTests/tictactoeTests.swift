@@ -77,8 +77,9 @@ import Testing
     }
 
     @Test func testRandomPlayerOnlyMakesValidMoves() {
-        let player = RandomPlayer(name: "Random AI", piece: .x)
+        let player = RandomPlayer(name: "Random AI")
         var board = Board()
+        player.beginNewgame(board: board, piece: .x)
         
         // Fill 7 cells
         _ = board.makeMove(row: 0, col: 0, piece: .o)
@@ -89,16 +90,15 @@ import Testing
         _ = board.makeMove(row: 1, col: 2, piece: .o)
         _ = board.makeMove(row: 2, col: 0, piece: .o)
         
-        player.updateBoard(board)
-        
         let move = player.requestMove()
         #expect(board.isValidMove(row: move.row, col: move.col))
         #expect(move == (2, 1) || move == (2, 2))
     }
 
     @Test func testMinimaxPlayerWinsImmediately() {
-        let player = MinimaxPlayer(name: "Minimax AI", piece: .o)
+        let player = MinimaxPlayer(name: "Minimax AI")
         var board = Board()
+        player.beginNewgame(board: board, piece: .o)
         
         // O has two in a row, should take the win
         _ = board.makeMove(row: 0, col: 0, piece: .o)
@@ -106,28 +106,27 @@ import Testing
         _ = board.makeMove(row: 1, col: 0, piece: .x)
         _ = board.makeMove(row: 1, col: 1, piece: .x)
         
-        player.updateBoard(board)
         let move = player.requestMove()
         #expect(move == (0, 2))
     }
 
     @Test func testMinimaxPlayerBlocksOpponentWin() {
-        let player = MinimaxPlayer(name: "Minimax AI", piece: .o)
+        let player = MinimaxPlayer(name: "Minimax AI")
         var board = Board()
+        player.beginNewgame(board: board, piece: .o)
         
         // X has two in a row, O must block at (0, 2)
         _ = board.makeMove(row: 0, col: 0, piece: .x)
         _ = board.makeMove(row: 0, col: 1, piece: .x)
         _ = board.makeMove(row: 1, col: 0, piece: .o)
         
-        player.updateBoard(board)
         let move = player.requestMove()
         #expect(move == (0, 2))
     }
 
     @Test func testMinimaxVsMinimaxIsAlwaysADraw() {
-        let p1 = MinimaxPlayer(name: "Minimax AI 1", piece: .x)
-        let p2 = MinimaxPlayer(name: "Minimax AI 2", piece: .o)
+        let p1 = MinimaxPlayer(name: "Minimax AI 1")
+        let p2 = MinimaxPlayer(name: "Minimax AI 2")
         
         let runner = GameRunner(player1: p1, player2: p2, totalGames: 5)
         runner.run()
@@ -139,11 +138,9 @@ import Testing
             var board = Board()
             let p1Piece: BoardPiece = (game % 2 == 1) ? .x : .o
             let p2Piece: BoardPiece = (game % 2 == 1) ? .o : .x
-            p1.piece = p1Piece
-            p2.piece = p2Piece
-            
-            p1.updateBoard(board)
-            p2.updateBoard(board)
+
+            p1.beginNewgame(board: board, piece: p1Piece)
+            p2.beginNewgame(board: board, piece: p2Piece)
             
             var currentPiece = BoardPiece.x
             while !board.isGameOver() {
@@ -151,8 +148,6 @@ import Testing
                 let move = activePlayer.requestMove()
                 #expect(board.isValidMove(row: move.row, col: move.col))
                 _ = board.makeMove(row: move.row, col: move.col, piece: currentPiece)
-                p1.updateBoard(board)
-                p2.updateBoard(board)
                 currentPiece = currentPiece.opposite
             }
             #expect(board.winner() == nil, "Minimax vs Minimax should result in a draw, but winner was \(board.winner()?.rawValue ?? "none")")

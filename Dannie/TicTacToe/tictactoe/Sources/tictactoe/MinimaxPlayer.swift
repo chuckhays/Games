@@ -1,27 +1,9 @@
 import Foundation
 
-public final class MinimaxPlayer: TicTacToePlayer, @unchecked Sendable {
-    public let name: String
-    public var piece: BoardPiece
-    private var board: Board
-    private let lock = NSLock()
+public final class MinimaxPlayer: TicTacToePlayerBase {
     
-    public init(name: String, piece: BoardPiece) {
-        self.name = name
-        self.piece = piece
-        self.board = Board()
-    }
-    
-    public func updateBoard(_ board: Board) {
-        lock.lock()
-        defer { lock.unlock() }
-        self.board = board
-    }
-    
-    public func requestMove() -> (row: Int, col: Int) {
-        lock.lock()
-        let currentBoard = board
-        lock.unlock()
+    public override func requestMove() -> (row: Int, col: Int) {
+        let currentBoard = self.board
         
         return findBestMove(board: currentBoard)
     }
@@ -40,7 +22,7 @@ public final class MinimaxPlayer: TicTacToePlayer, @unchecked Sendable {
         var bestMoves: [(row: Int, col: Int)] = []
         
         for move in moves {
-            var nextBoard = board
+            let nextBoard = Board(grid: board.grid)
             _ = nextBoard.makeMove(row: move.row, col: move.col, piece: piece)
             let score = minimax(board: nextBoard, depth: 0, alpha: Int.min, beta: Int.max, isMaximizing: false, maxPlayer: piece, minPlayer: opponentPiece)
             if score > bestScore {
@@ -72,7 +54,7 @@ public final class MinimaxPlayer: TicTacToePlayer, @unchecked Sendable {
         if isMaximizing {
             var bestScore = Int.min
             for move in board.availableMoves() {
-                var nextBoard = board
+                let nextBoard = Board(grid: board.grid)
                 _ = nextBoard.makeMove(row: move.row, col: move.col, piece: maxPlayer)
                 let score = minimax(board: nextBoard, depth: depth + 1, alpha: alphaVar, beta: betaVar, isMaximizing: false, maxPlayer: maxPlayer, minPlayer: minPlayer)
                 bestScore = max(bestScore, score)
@@ -85,7 +67,7 @@ public final class MinimaxPlayer: TicTacToePlayer, @unchecked Sendable {
         } else {
             var bestScore = Int.max
             for move in board.availableMoves() {
-                var nextBoard = board
+                let nextBoard = Board(grid: board.grid)
                 _ = nextBoard.makeMove(row: move.row, col: move.col, piece: minPlayer)
                 let score = minimax(board: nextBoard, depth: depth + 1, alpha: alphaVar, beta: betaVar, isMaximizing: true, maxPlayer: maxPlayer, minPlayer: minPlayer)
                 bestScore = min(bestScore, score)

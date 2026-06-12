@@ -48,11 +48,8 @@ public final class GameRunner: @unchecked Sendable {
                 firstPlayerName = player2.name
             }
             
-            player1.piece = p1Piece
-            player2.piece = p2Piece
-            
-            player1.updateBoard(board)
-            player2.updateBoard(board)
+            player1.beginNewgame(board: board, piece: p1Piece)
+            player2.beginNewgame(board: board, piece: p2Piece)
             
             print("\(player1.name) is playing as \(p1Piece.rawValue)")
             print("\(player2.name) is playing as \(p2Piece.rawValue)")
@@ -87,10 +84,6 @@ public final class GameRunner: @unchecked Sendable {
                 } else {
                     _ = board.makeMove(row: move.row, col: move.col, piece: currentPiece)
                 }
-                
-                // Update both players with the new board state
-                player1.updateBoard(board)
-                player2.updateBoard(board)
                 
                 if verbose {
                     print(board.render())

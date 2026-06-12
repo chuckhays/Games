@@ -14,7 +14,7 @@ public enum BoardPiece: String, Codable, CaseIterable, Sendable {
     }
 }
 
-public struct Board: Equatable, Sendable {
+public class Board {
     private(set) public var grid: [[BoardPiece]]
     
     public init() {
@@ -32,7 +32,7 @@ public struct Board: Equatable, Sendable {
         return grid[row][col] == .empty
     }
     
-    public mutating func makeMove(row: Int, col: Int, piece: BoardPiece) -> Bool {
+    public func makeMove(row: Int, col: Int, piece: BoardPiece) -> Bool {
         guard isValidMove(row: row, col: col) else {
             return false
         }

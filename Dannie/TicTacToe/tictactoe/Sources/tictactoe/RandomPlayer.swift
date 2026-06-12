@@ -1,27 +1,9 @@
 import Foundation
 
-public final class RandomPlayer: TicTacToePlayer, @unchecked Sendable {
-    public let name: String
-    public var piece: BoardPiece
-    private var board: Board
-    private let lock = NSLock()
+public final class RandomPlayer: TicTacToePlayerBase {
     
-    public init(name: String, piece: BoardPiece) {
-        self.name = name
-        self.piece = piece
-        self.board = Board()
-    }
-    
-    public func updateBoard(_ board: Board) {
-        lock.lock()
-        defer { lock.unlock() }
-        self.board = board
-    }
-    
-    public func requestMove() -> (row: Int, col: Int) {
-        lock.lock()
+    public override func requestMove() -> (row: Int, col: Int) {
         let available = board.availableMoves()
-        lock.unlock()
         
         guard !available.isEmpty else {
             return (0, 0)

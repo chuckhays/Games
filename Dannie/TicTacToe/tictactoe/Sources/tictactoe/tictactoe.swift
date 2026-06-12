@@ -87,11 +87,11 @@ struct tictactoe {
         let p1: TicTacToePlayer
         switch p1Type {
         case "random":
-            p1 = RandomPlayer(name: "Random AI 1", piece: .x)
+            p1 = RandomPlayer(name: "Random AI 1")
         case "minimax":
-            p1 = MinimaxPlayer(name: "Minimax AI 1", piece: .x)
+            p1 = MinimaxPlayer(name: "Minimax AI 1")
         case "human":
-            p1 = HumanPlayer(name: "Human 1", piece: .x)
+            p1 = HumanPlayer(name: "Human 1")
         default:
             fatalError("Unsupported player 1 type")
         }
@@ -100,11 +100,11 @@ struct tictactoe {
         let p2: TicTacToePlayer
         switch p2Type {
         case "random":
-            p2 = RandomPlayer(name: "Random AI 2", piece: .o)
+            p2 = RandomPlayer(name: "Random AI 2")
         case "minimax":
-            p2 = MinimaxPlayer(name: "Minimax AI 2", piece: .o)
+            p2 = MinimaxPlayer(name: "Minimax AI 2")
         case "human":
-            p2 = HumanPlayer(name: "Human 2", piece: .o)
+            p2 = HumanPlayer(name: "Human 2")
         default:
             fatalError("Unsupported player 2 type")
         }
