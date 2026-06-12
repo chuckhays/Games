@@ -5,9 +5,9 @@ struct tictactoe {
     static func main() {
         let args = CommandLine.arguments
         
-        var games = 10
+        var games = 1000
         var p1Type = "minimax"
-        var p2Type = "random"
+        var p2Type = "minimax"
         
         func printHelp() {
             print("""
