@@ -12,12 +12,6 @@ public final class RandomPlayer: TicTacToePlayer, @unchecked Sendable {
         self.board = Board()
     }
     
-    public func getBoard() -> Board {
-        lock.lock()
-        defer { lock.unlock() }
-        return board
-    }
-    
     public func updateBoard(_ board: Board) {
         lock.lock()
         defer { lock.unlock() }

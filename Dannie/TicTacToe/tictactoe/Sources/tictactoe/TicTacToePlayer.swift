@@ -5,7 +5,6 @@ public protocol TicTacToePlayer: AnyObject, Sendable {
     var piece: BoardPiece { get set }
     
     // Methods to access game board state
-    func getBoard() -> Board
     func updateBoard(_ board: Board)
     
     // Method called on the player to request their next move
