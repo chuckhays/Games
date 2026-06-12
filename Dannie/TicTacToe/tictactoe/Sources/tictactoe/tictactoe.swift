@@ -5,9 +5,9 @@ struct tictactoe {
     static func main() {
         let args = CommandLine.arguments
         
-        var games = 10
-        var p1Type = "minimax"
-        var p2Type = "random"
+        var games = 100
+        var p1Type = "random"
+        var p2Type = "dannie"
         var visualize = true
         
         func printHelp() {
@@ -18,8 +18,8 @@ struct tictactoe {
             
             Options:
               -g, --games <count>     Number of games to simulate (default: 10)
-              -p1, --player1 <type>   Type of player 1: random, minimax, human (default: minimax)
-              -p2, --player2 <type>   Type of player 2: random, minimax, human (default: random)
+              -p1, --player1 <type>   Type of player 1: random, minimax, human, dannie (default: minimax)
+              -p2, --player2 <type>   Type of player 2: random, minimax, human, dannie (default: random)
               -v, --visualize         Visualize each game as it is played (default: on)
               -h, --help              Show this help menu
             """)
@@ -47,11 +47,11 @@ struct tictactoe {
             case "-p1", "--player1":
                 if i + 1 < args.count {
                     let val = args[i+1].lowercased()
-                    if ["random", "minimax", "human"].contains(val) {
+                    if ["random", "minimax", "human", "dannie"].contains(val) {
                         p1Type = val
                         i += 2
                     } else {
-                        print("Error: Invalid player type '\(val)' for player 1. Must be one of: random, minimax, human.")
+                        print("Error: Invalid player type '\(val)' for player 1. Must be one of: random, minimax, human, dannie.")
                         printHelp()
                         exit(1)
                     }
@@ -63,11 +63,11 @@ struct tictactoe {
             case "-p2", "--player2":
                 if i + 1 < args.count {
                     let val = args[i+1].lowercased()
-                    if ["random", "minimax", "human"].contains(val) {
+                    if ["random", "minimax", "human", "dannie"].contains(val) {
                         p2Type = val
                         i += 2
                     } else {
-                        print("Error: Invalid player type '\(val)' for player 2. Must be one of: random, minimax, human.")
+                        print("Error: Invalid player type '\(val)' for player 2. Must be one of: random, minimax, human, dannie.")
                         printHelp()
                         exit(1)
                     }
@@ -92,6 +92,8 @@ struct tictactoe {
             p1 = MinimaxPlayer(name: "Minimax AI 1")
         case "human":
             p1 = HumanPlayer(name: "Human 1")
+        case "dannie":
+            p1 = DanniePlayer(name: "Dannie AI")
         default:
             fatalError("Unsupported player 1 type")
         }
@@ -105,6 +107,8 @@ struct tictactoe {
             p2 = MinimaxPlayer(name: "Minimax AI 2")
         case "human":
             p2 = HumanPlayer(name: "Human 2")
+        case "dannie":
+            p2 = DanniePlayer(name: "Dannie AI")
         default:
             fatalError("Unsupported player 2 type")
         }
