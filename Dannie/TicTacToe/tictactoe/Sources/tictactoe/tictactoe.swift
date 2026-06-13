@@ -5,7 +5,7 @@ struct tictactoe {
     static func main() {
         let args = CommandLine.arguments
         
-        var games = 100
+        var games = 1000
         var p1Type = "random"
         var p2Type = "dannie"
         var visualize = true
