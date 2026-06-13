@@ -1,0 +1,24 @@
+{
+    "configurations": [
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:99game}",
+            "name": "Debug 99game",
+            "target": "99game",
+            "configuration": "debug",
+            "preLaunchTask": "swift: Build Debug 99game"
+        },
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:99game}",
+            "name": "Release 99game",
+            "target": "99game",
+            "configuration": "release",
+            "preLaunchTask": "swift: Build Release 99game"
+        }
+    ]
+}
